@@ -108,7 +108,7 @@ def segmented_knn_graph(x, k, segs):
 
     dst = F.reshape(dst, (-1,))
     src = F.reshape(src, (-1,))
-    adj = sparse.csr_matrix((F.asnumpy(F.zeros_like(dst) + 1), (F.asnumpy(dst), F.asnumpy(src))))
+    adj = sparse.csr_matrix((F.asnumpy(F.zeros_like(dst) + 1), (F.asnumpy(dst), F.asnumpy(src))), shape=(n_total_points, n_total_points))
 
     g = DGLGraph(adj, readonly=True)
     return g
